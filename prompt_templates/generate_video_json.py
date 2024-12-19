@@ -24,7 +24,7 @@ class GenerateVideoJson:
         Prompt local model
         '''
         messages = []
-        messages.append({"role": "system", "content": "You are a helpful assistant that outputs only JSON objects. You are careful to not include any strig and your response will be used in a larger pipeline and must be valid JSON."})
+        messages.append({"role": "system", "content": "You are a helpful assistant that outputs only JSON objects. You are careful to not include any strig and your response will be used in a larger pipeline and must be valid JSON. Your response should start with the opening bracket of a JSON object : {"})
         instruct = '''
             I want you to act as a presentation structure expert. I will provide a text document, and you should convert its content into a structured JSON format suitable for a video presentation. Think of it as a documentary style presentation with visual assistance with graphs and charts. 
 
@@ -212,8 +212,8 @@ class GenerateVideoJson:
 
             ```
 
-            Please create a structured presentation JSON following these guidelines using the provided references. 
-
+            Please create a structured presentation JSON following these guidelines using the provided references.
+            In the output, please be mindful that you are not the author or in any way affiliated with the authors of the reference text. Do not take ownership. Refer to it as : this (article, review, study etc.) from (author or instition).
             There should be 3 slides in the output.
 
             Here is the text:

@@ -2,6 +2,9 @@ from .generate_file_list import FolderToFiles
 from .ml_backends.prompt_local import PromptLocal
 from .ml_backends.prompt_openai import PromptOpenAI
 from .ml_backends.prompt_lm_studio import PromptLMStudio
+from .ml_backends.prompt_local_8bit import PromptLocal8Bit
+from .audio.fix_json_prep_audio import FixJsonPrepAudio
+from .audio.TTS_audio import TTSTextToWav
 from .webdriver import GiveWebdriver
 from .prompt_templates.extract_article import ExtractArticle
 from .prompt_templates.generic import GenericPrompt
@@ -20,6 +23,7 @@ NODE_CLASS_MAPPINGS = {
     "generate_image_paths_from_subfolders": FolderToFiles,
     "web_driver_to_html": GiveWebdriver,
     "prompt local": PromptLocal,
+    "prompt local 8bit": PromptLocal8Bit,
     "extract_article": ExtractArticle,
     "generic_prompt": GenericPrompt,
     "prompt_openai": PromptOpenAI,
@@ -31,6 +35,8 @@ NODE_CLASS_MAPPINGS = {
     'pop_up_file': PopUpFile,
     'generate_video_json': GenerateVideoJson,
     'prompt_lm_studio': PromptLMStudio,
+    "TTS_text_to_wav": TTSTextToWav,
+    "fix json prep audio": FixJsonPrepAudio
 }
  
 # A dictionary that contains the friendly/humanly readable titles for the nodes

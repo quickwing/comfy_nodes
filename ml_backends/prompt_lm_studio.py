@@ -22,7 +22,7 @@ class PromptLMStudio:
     #OUTPUT_NODE = False
  
     CATEGORY = "sim/lm/backend"
-    def prompt_lm_studio(messages):
+    def prompt_lm_studio(self, messages):
         headers = {
                     "Content-Type": "application/json"
                     }
@@ -35,7 +35,7 @@ class PromptLMStudio:
                 }
 
         # Making the POST request to the local server
-        response = requests.post('http://localhost:1234/v1/chat/completions', headers=headers, data=json.dumps(data1))
+        response = requests.post('http://172.21.224.1:1234/v1/chat/completions', headers=headers, data=json.dumps(data1))
         resp_content1 = json.loads(response.text)["choices"][0]["message"]["content"]
         return resp_content1
     
@@ -43,6 +43,8 @@ class PromptLMStudio:
         ''' 
         Prompt LMStudio
         '''
-        resp = self.prompt_lm_studio(kwargs["messages"])
+        messages = kwargs["messages"]
+        print(messages)
+        resp = self.prompt_lm_studio(messages)
 
         return (resp,)

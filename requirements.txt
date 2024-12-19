@@ -5,3 +5,5 @@ accelerate
 gradio
 pyannote.audio
 TTS
+selenium
+bitsandbytes
