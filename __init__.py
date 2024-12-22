@@ -1,10 +1,14 @@
+import sys
+
 from .generate_file_list import FolderToFiles
 from .ml_backends.prompt_local import PromptLocal
 from .ml_backends.prompt_openai import PromptOpenAI
 from .ml_backends.prompt_lm_studio import PromptLMStudio
 from .ml_backends.prompt_local_8bit import PromptLocal8Bit
-from .audio.fix_json_prep_audio import FixJsonPrepAudio
-from .audio.TTS_audio import TTSTextToWav
+if sys.platform != 'win32':
+    from .audio.fix_json_prep_audio import FixJsonPrepAudio
+    from .audio.TTS_audio import TTSTextToWav
+from .audio.openai_fix_json_prep_audio import OpenaiFixJsonPrepAudio
 from .webdriver import GiveWebdriver
 from .prompt_templates.extract_article import ExtractArticle
 from .prompt_templates.generic import GenericPrompt
@@ -35,9 +39,13 @@ NODE_CLASS_MAPPINGS = {
     'pop_up_file': PopUpFile,
     'generate_video_json': GenerateVideoJson,
     'prompt_lm_studio': PromptLMStudio,
-    "TTS_text_to_wav": TTSTextToWav,
-    "fix json prep audio": FixJsonPrepAudio
+    "openai_fix_json_prep_audio": OpenaiFixJsonPrepAudio,
 }
+
+if sys.platform != 'win32':
+    NODE_CLASS_MAPPINGS["fix_json_prep_audio"] = FixJsonPrepAudio
+    NODE_CLASS_MAPPINGS["tts_text_to_wav"] = TTSTextToWav
+
  
 # A dictionary that contains the friendly/humanly readable titles for the nodes
 NODE_DISPLAY_NAME_MAPPINGS = {
