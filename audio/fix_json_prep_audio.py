@@ -19,8 +19,8 @@ class FixJsonPrepAudio:
             },
         }
  
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("output_json",)
+    RETURN_TYPES = ("STRING","STRING", )
+    RETURN_NAMES = ("output_json","first_description", )
  
     FUNCTION = "__call__"
  
@@ -59,4 +59,4 @@ class FixJsonPrepAudio:
         del tts
         torch.cuda.empty_cache()
 
-        return (json.dumps(my_json, indent=4),)
+        return (json.dumps(my_json, indent=4),my_json["slides"][0]["imageDescription"], )
