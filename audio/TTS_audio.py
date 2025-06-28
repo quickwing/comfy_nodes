@@ -10,12 +10,12 @@ class TTSTextToWav:
         return {
             "required": {
                 "text": ("STRING", {"default": "this is a test"}),
-                'speaker_file_pth': ("STRING", {"default": ""}),
+                'speaker_file_pth': ("AUDIO_PATH", {"default": ""}),
                 "output_file_pth": ("STRING", {"default": ""}),
             },
         }
  
-    RETURN_TYPES = ("STRING",)
+    RETURN_TYPES = ("AUDIO_PATH",)
     RETURN_NAMES = ("output_file_pth",)
  
     FUNCTION = "__call__"

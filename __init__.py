@@ -14,11 +14,15 @@ from .prompt_templates.extract_article import ExtractArticle
 from .prompt_templates.generic import GenericPrompt
 from .prompt_templates.generate_video_json import GenerateVideoJson
 from .audio_to_transcript import AudioToTranscript
-from .video_to_audio import VideoToAudio
+from .audio.video_to_audio import VideoToAudio
 from .utils.save_file import SaveText
 from .prompt_templates.extract_question import ExtractQuestion
 from .utils.open_file import OpenFile
 from .utils.pop_up_file import PopUpFile
+from .datasets.model import LoadUnslothModelNode
+from .datasets.rewards import *
+from .datasets.dataset import *
+from .datasets.trainer import *
 from dotenv import load_dotenv
 
 load_dotenv()  #
@@ -40,6 +44,29 @@ NODE_CLASS_MAPPINGS = {
     'generate_video_json': GenerateVideoJson,
     'prompt_lm_studio': PromptLMStudio,
     "openai_fix_json_prep_audio": OpenaiFixJsonPrepAudio,
+    "load_unsloth_model": LoadUnslothModelNode,
+    "CorrectnessRewardNode": CorrectnessRewardNode,
+    "IntRewardNode": IntRewardNode,
+    "StrictFormatRewardNode": StrictFormatRewardNode,
+    "SoftFormatRewardNode": SoftFormatRewardNode,
+    "XMLCountRewardNode": XMLCountRewardNode,
+    "ExtractHashAnswerNode": ExtractHashAnswerNode,
+    "ExtractXMLAnswerNode": ExtractXMLAnswerNode,
+    "FormatXMLAnswerNode": FormatXMLAnswerNode,
+    "LiteralStringNode": LiteralStringNode,
+    "ApplyStringFunctionsNode": ApplyStringFunctionsNode,
+    "GRPOTrainingArgsNode": GRPOTrainingArgsNode,
+    "GRPOTrainerTrainNode": GRPOTrainerTrainNode,
+    "GSM8KDatasetNode": GSM8KDatasetNode, 
+    "MapStringFunctionsNode": MapStringFunctionsNode,
+    "LoadHuggingFaceDatasetNode": LoadHuggingFaceDatasetNode,
+    "ConcatWithStringNode": ConcatWithStringNode, 
+    "SampleDatasetNode": SampleDatasetNode,
+    "ToPromptMessagesNode": ToPromptMessagesNode,
+    "StructuredAnswerRewardNode": StructuredAnswerRewardNode,
+    "TextGenerationCallbackNode": TextGenerationCallbackNode,
+    "DatasetTrainTestSplitNode": DatasetTrainTestSplitNode,
+    'CutStringAtEnd': CutStringAtEnd
 }
 
 if sys.platform != 'win32':
@@ -59,4 +86,10 @@ LIST_OF_PATHS
 LIST_OF_FILE_NAMES
 MESSAGES
 AUDIO_PATH
+MODEL
+TOKENIZER
+STRING_FUNCTION_LIST
+REWARD_FUNCTION_LIST
+TRAINING_ARGS 
+DATASET
 '''
