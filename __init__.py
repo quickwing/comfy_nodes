@@ -67,7 +67,8 @@ NODE_CLASS_MAPPINGS = {
     "TextGenerationCallbackNode": TextGenerationCallbackNode,
     "DatasetTrainTestSplitNode": DatasetTrainTestSplitNode,
     'CutStringAtEnd': CutStringAtEnd,
-    "LoadQLoraModelNode": LoadQLoraModelNode
+    "LoadQLoraModelNode": LoadQLoraModelNode,
+    "FilterDatasetKeysNode": FilterDatasetKeysNode
 }
 
 # if sys.platform != 'win32':

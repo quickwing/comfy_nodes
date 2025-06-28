@@ -1,5 +1,60 @@
-from datasets import load_dataset
+from datasets import load_dataset, Dataset, DatasetDict
 import re
+
+class FilterDatasetKeysNode:
+    def __init__(self):
+        super().__init__()
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "dataset": ("DATASET",),
+                "keys": ("STRING", {
+                    "default": "",
+                    "multiline": True,
+                    "label": "Comma-separated keys or single key"
+                }),
+                "remove": ("BOOLEAN", {
+                    "default": True,
+                    "label": "Remove keys (True) or keep only (False)"
+                }),
+            }
+        }
+
+    RETURN_TYPES = ("DATASET",)
+    RETURN_NAMES = ("filtered_dataset",)
+    FUNCTION = "__call__"
+    CATEGORY = "sim/datasets"
+
+    def __call__(self, *args, **kwargs):
+        dataset = kwargs["dataset"]
+        keys = kwargs["keys"]
+        remove = kwargs["remove"]
+
+        if isinstance(dataset, Dataset):
+            return (dataset,)  # Single split dataset, return as-is
+
+        if not isinstance(dataset, DatasetDict):
+            return ("Error: Input is not a DatasetDict.",)
+
+        key_list = [k.strip() for k in keys.split(",") if k.strip()]
+
+        if len(key_list) == 1 and "," not in keys:
+            key = key_list[0]
+            if key in dataset:
+                return (dataset[key],)
+            else:
+                return (f"Error: Key '{key}' not found in dataset.",)
+
+        if remove:
+            kept_keys = [k for k in dataset.keys() if k not in key_list]
+        else:
+            kept_keys = [k for k in dataset.keys() if k in key_list]
+
+        filtered = {k: dataset[k] for k in kept_keys}
+        return (DatasetDict(filtered),)
+
 
 class GSM8KDatasetNode:
     def __init__(self):
