@@ -4,7 +4,7 @@ transformers
 accelerate
 gradio
 pyannote.audio
-TTS
-selenium
+#TTS
+#selenium
 bitsandbytes
 pydub
