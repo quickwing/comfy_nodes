@@ -19,7 +19,7 @@ from .utils.save_file import SaveText
 from .prompt_templates.extract_question import ExtractQuestion
 from .utils.open_file import OpenFile
 from .utils.pop_up_file import PopUpFile
-from .datasets.model import LoadUnslothModelNode
+from .datasets.model import *
 from .datasets.rewards import *
 from .datasets.dataset import *
 from .datasets.trainer import *
@@ -66,7 +66,8 @@ NODE_CLASS_MAPPINGS = {
     "StructuredAnswerRewardNode": StructuredAnswerRewardNode,
     "TextGenerationCallbackNode": TextGenerationCallbackNode,
     "DatasetTrainTestSplitNode": DatasetTrainTestSplitNode,
-    'CutStringAtEnd': CutStringAtEnd
+    'CutStringAtEnd': CutStringAtEnd,
+    "LoadQLoraModelNode": LoadQLoraModelNode
 }
 
 # if sys.platform != 'win32':
