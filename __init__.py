@@ -5,16 +5,16 @@ from .ml_backends.prompt_local import PromptLocal
 from .ml_backends.prompt_openai import PromptOpenAI
 from .ml_backends.prompt_lm_studio import PromptLMStudio
 from .ml_backends.prompt_local_8bit import PromptLocal8Bit
-if sys.platform != 'win32':
-    from .audio.fix_json_prep_audio import FixJsonPrepAudio
-    from .audio.TTS_audio import TTSTextToWav
-from .audio.openai_fix_json_prep_audio import OpenaiFixJsonPrepAudio
-from .webdriver import GiveWebdriver
-from .prompt_templates.extract_article import ExtractArticle
+# if sys.platform != 'win32':
+#     from .audio.fix_json_prep_audio import FixJsonPrepAudio
+#     from .audio.TTS_audio import TTSTextToWav
+# from .audio.openai_fix_json_prep_audio import OpenaiFixJsonPrepAudio
+# from .webdriver import GiveWebdriver
+# from .prompt_templates.extract_article import ExtractArticle
 from .prompt_templates.generic import GenericPrompt
-from .prompt_templates.generate_video_json import GenerateVideoJson
+# from .prompt_templates.generate_video_json import GenerateVideoJson
 from .audio_to_transcript import AudioToTranscript
-from .audio.video_to_audio import VideoToAudio
+# from .audio.video_to_audio import VideoToAudio
 from .utils.save_file import SaveText
 from .prompt_templates.extract_question import ExtractQuestion
 from .utils.open_file import OpenFile
@@ -29,21 +29,21 @@ load_dotenv()  #
 
 NODE_CLASS_MAPPINGS = {
     "generate_image_paths_from_subfolders": FolderToFiles,
-    "web_driver_to_html": GiveWebdriver,
+    # "web_driver_to_html": GiveWebdriver,
     "prompt local": PromptLocal,
     "prompt local 8bit": PromptLocal8Bit,
-    "extract_article": ExtractArticle,
+    # "extract_article": ExtractArticle,
     "generic_prompt": GenericPrompt,
     "prompt_openai": PromptOpenAI,
     "audio_to_transcript": AudioToTranscript,
-    "video_to_audio": VideoToAudio,
+    # "video_to_audio": VideoToAudio,
     'save_text': SaveText,
     'extract_question': ExtractQuestion,
     'read_file': OpenFile,
     'pop_up_file': PopUpFile,
-    'generate_video_json': GenerateVideoJson,
+    # 'generate_video_json': GenerateVideoJson,
     'prompt_lm_studio': PromptLMStudio,
-    "openai_fix_json_prep_audio": OpenaiFixJsonPrepAudio,
+    # "openai_fix_json_prep_audio": OpenaiFixJsonPrepAudio,
     "load_unsloth_model": LoadUnslothModelNode,
     "CorrectnessRewardNode": CorrectnessRewardNode,
     "IntRewardNode": IntRewardNode,
@@ -69,9 +69,9 @@ NODE_CLASS_MAPPINGS = {
     'CutStringAtEnd': CutStringAtEnd
 }
 
-if sys.platform != 'win32':
-    NODE_CLASS_MAPPINGS["fix_json_prep_audio"] = FixJsonPrepAudio
-    NODE_CLASS_MAPPINGS["tts_text_to_wav"] = TTSTextToWav
+# if sys.platform != 'win32':
+#     NODE_CLASS_MAPPINGS["fix_json_prep_audio"] = FixJsonPrepAudio
+#     NODE_CLASS_MAPPINGS["tts_text_to_wav"] = TTSTextToWav
 
  
 # A dictionary that contains the friendly/humanly readable titles for the nodes
