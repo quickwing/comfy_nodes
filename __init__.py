@@ -68,7 +68,8 @@ NODE_CLASS_MAPPINGS = {
     "DatasetTrainTestSplitNode": DatasetTrainTestSplitNode,
     'CutStringAtEnd': CutStringAtEnd,
     "LoadQLoraModelNode": LoadQLoraModelNode,
-    "FilterDatasetKeysNode": FilterDatasetKeysNode
+    "FilterDatasetKeysNode": FilterDatasetKeysNode,
+    "RenameDatasetKeyNode": RenameDatasetKeyNode
 }
 
 # if sys.platform != 'win32':
