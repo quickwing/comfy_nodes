@@ -1,6 +1,39 @@
 from datasets import load_dataset, Dataset, DatasetDict
 import re
 
+class RemoveKeysNode:
+    def __init__(self):
+        super().__init__()
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "dataset": ("DATASET",),
+                "keys": ("STRING", {
+                    "default": "",
+                    "multiline": True,
+                    "label": "Comma-separated keys or single key"
+                }),
+            }
+        }
+
+    RETURN_TYPES = ("DATASET",)
+    RETURN_NAMES = ("filtered_dataset",)
+    FUNCTION = "__call__"
+    CATEGORY = "sim/datasets"
+
+    def __call__(self, *args, **kwargs):
+        dataset = kwargs["dataset"]
+        keys = kwargs["keys"]
+
+
+
+        key_list = [k.strip() for k in keys.split(",") if k.strip()]
+
+        dataset = dataset.remove_columns(key_list)
+        return (dataset,)
+
 class FilterDatasetKeysNode:
     def __init__(self):
         super().__init__()

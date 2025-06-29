@@ -69,7 +69,8 @@ NODE_CLASS_MAPPINGS = {
     'CutStringAtEnd': CutStringAtEnd,
     "LoadQLoraModelNode": LoadQLoraModelNode,
     "FilterDatasetKeysNode": FilterDatasetKeysNode,
-    "RenameDatasetKeyNode": RenameDatasetKeyNode
+    "RenameDatasetKeyNode": RenameDatasetKeyNode,
+    'RemoveKeysNode': RemoveKeysNode
 }
 
 # if sys.platform != 'win32':
