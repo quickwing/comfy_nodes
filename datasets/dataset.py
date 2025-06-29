@@ -433,3 +433,35 @@ class DatasetTrainTestSplitNode:
             return (split["train"], split["test"])
         except Exception as e:
             raise RuntimeError(f"Failed to split dataset: {str(e)}")
+
+class RenameDatasetKeyNode:
+    def __init__(self):
+        super().__init__()
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "dataset": ("DATASET",),
+                "in_key": ("STRING", {"default": "text", "label": "Input Key"}),
+                "out_key": ("STRING", {"default": "renamed_text", "label": "Output Key"}),
+            }
+        }
+
+    RETURN_TYPES = ("DATASET",)
+    RETURN_NAMES = ("dataset",)
+    FUNCTION = "__call__"
+    CATEGORY = "sim/datasets"
+
+    def __call__(self, *args, **kwargs):
+        dataset = kwargs["dataset"]
+        in_key = kwargs["in_key"]
+        out_key = kwargs["out_key"]
+
+        def rename_key(batch):
+            batch[out_key] = batch[in_key]
+            del batch[in_key]
+            return batch
+
+        renamed_dataset = dataset.map(rename_key)
+        return (renamed_dataset,)
